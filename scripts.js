@@ -112,7 +112,11 @@ function renderApp() {
 	//it to the div we created above
 	FB.api('/me', function(response) {
 		nameDiv.innerHTML = 'Hello, ' + response.name;
-	})
+	});
+
+	FB.api('/me/home', function(response) {
+		console.log(response);
+	});
 
 	//Creating an input box for the status message
 	var statusBox = document.createElement('input');
@@ -158,7 +162,7 @@ function loginToApp() {
 			// The person cancelled the login dialog
 			console.log('User cancelled connection.');
 		}
-	}, {scope: 'publish_actions'});
+	}, {scope: 'publish_actions read_stream'});
 }
 
 //Logs the user out of the app when the logout button is called
